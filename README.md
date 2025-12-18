@@ -22,12 +22,11 @@
 | 8 | [アクセシビリティ](./docs/accessibility/index.md) | ARIA属性、セマンティックHTML |
 | 9 | [開発・運用規約](./docs/development-rules/index.md) | TypeScript、テスト |
 | 10 | [禁止事項](./docs/prohibited/index.md) | 技術的制約、実装制約 |
+| 11 | [UIライブラリ選定](./docs/ui-library/index.md) | Headless UI、ShadCN/UI、スタイル付きライブラリの比較 |
 
 ---
 
 ## 参考資料
-
-- [UIライブラリ選定について](./docs/ui-library/index.md)
 - [Atomic Design - Brad Frost](https://atomicdesign.bradfrost.com/table-of-contents/)
 - [Tailwind CSS Colors](https://tailwindcss.com/docs/colors)
 - [ShadCN/UI 公式ドキュメント](https://ui.shadcn.com/)
