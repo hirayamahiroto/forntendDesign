@@ -10,7 +10,8 @@
 
 ## サーバー状態
 
-- page.tsx（SSR）で初期データ取得を行う
+- page.tsx（SSR）で初期データ取得を行う（BFF read route を fetchers 経由で呼ぶ）
+- 更新後は hook で `router.refresh()` し、SSR で再取得する。詳細は [Client 構成](../client/index.md)
 
 ---
 

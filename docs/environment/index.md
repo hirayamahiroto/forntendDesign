@@ -11,6 +11,9 @@
 | バリアント管理 | tailwind-variants |
 | パッケージマネージャー | pnpm |
 | モノレポ管理 | Turborepo |
+| BFF / API | Hono（型は `hc<AppType>` で共有） |
+
+パッケージの分割と依存ルールは [パッケージ構成](../packages/index.md) を参照。
 
 ---
 

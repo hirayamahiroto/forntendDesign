@@ -21,14 +21,17 @@ export default function Page() {
 
 ### SSR + CSR（動的な動きが必要な場合）
 
+> データ取得は `fetch` を直接書かず、`src/fetchers/` 経由で BFF を呼ぶ。詳細は [Client 構成](../client/index.md) / [BFF 設計](../bff/index.md)。
+
 ```tsx
 // page.tsx
 import { ClientAdapter } from "./ClientAdapter";
+import { getScreen } from "@/fetchers/screen/getScreen";
 
 export default async function Page() {
-  const data = await fetch('/api/data');
-  const initialData = await data.json();
-  return <ClientAdapter initialData={initialData} />;
+  const result = await getScreen();
+  if (!result.ok) return <ErrorView message={result.error.message} />;
+  return <ClientAdapter initialData={result.value} />;
 }
 
 // ClientAdapter/index.tsx
