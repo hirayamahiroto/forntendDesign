@@ -95,3 +95,31 @@ const useUpdateMyName = () => {
 | ログイン後の編集画面  | `page.tsx` で read fetcher | hook で `router.refresh()` |
 
 クライアント側でのデータ取得ライブラリ（SWR / TanStack Query）は導入しない。導入を検討する条件は「SSR を経由しない取得（無限スクロール・ポーリング）が複数画面で必要になったとき」。
+
+---
+
+## 状態管理
+
+| 種類             | 方針                                                                                       |
+| ---------------- | ------------------------------------------------------------------------------------------ |
+| UI 状態          | React 標準 hooks（`useState` / `useReducer`）。`packages/ui` 内でも可（開閉・hover 等）      |
+| 操作の状態       | ClientAdapter 配下の hook が持つ（`isSaving` / `errorMessage` 等）                          |
+| サーバー状態     | `page.tsx` の SSR が正。更新後は `router.refresh()` で再取得し、クライアントにキャッシュを持たない |
+| グローバル状態   | 状態管理ライブラリは導入しない。複数画面をまたいで共有する状態が必要になった時点で再検討する |
+
+- `packages/ui` は `"use client"` や `next/*` を使わない。`next/link` / `next/image` が必要な箇所は、`apps/web` 側から要素やコンポーネントを props で注入する。
+
+---
+
+## TypeScript とテスト
+
+- `strict` + `noUncheckedIndexedAccess` を前提にする（`packages/tsconfig`）。
+- BFF・api-server の型は手書きせず `AppType` から導出する。
+
+| 対象                  | テスト手段                                                       |
+| --------------------- | ---------------------------------------------------------------- |
+| `packages/ui`         | Storybook（見た目・インタラクション）                            |
+| BFF route             | `app.request()` + api-server の fetch スタブ（整形・エラー透過）  |
+| hook                  | UI 値 → リクエストの写像と状態遷移                               |
+| api-server usecase    | repository をインメモリ実装に差し替えた単体テスト                |
+

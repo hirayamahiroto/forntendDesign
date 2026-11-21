@@ -40,7 +40,7 @@ packages/ui  ◀──  apps/web (Client)  ──▶  apps/web (BFF)  ──▶ 
 ```
 
 - 依存は常に **外側 → 内側**。逆向きの import は禁止。
-- `packages/ui` は `next/*` に依存しない（[状態管理](../state-management/index.md) と同じ制約）。
+- `packages/ui` は `next/*` に依存しない（[Client 構成](../client/index.md#状態管理)）。
 - Client は api-server を **直接呼ばない**。必ず BFF を経由する。
 - BFF → api-server の型は `@repo/api-server/client`（型のみの export）から導出し、手書きしない。詳細は [パッケージ構成](../packages/index.md#型契約の共有)。
 

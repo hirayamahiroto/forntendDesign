@@ -55,6 +55,7 @@
 - 完成品
 - Templateとページ固有のOrganismを配置
 - Templateにchildrenとしてそのページのorganismsを配置して完成
+- **`packages/ui` には置かず、`apps/web` の `page.tsx` が担う**（データ取得と結合するため。[Client 構成](../client/index.md)）
 
 ### レイヤー間の関係図
 
@@ -108,8 +109,7 @@ packages/ui/src/
 │   │   └── structure/    # 構造を定義するatoms
 │   ├── molecules/
 │   ├── organisms/
-│   ├── templates/
-│   └── pages/
+│   └── templates/
 └── primitives/           # shadcn/ui コンポーネント
 ```
 
@@ -343,3 +343,10 @@ function Dialog({ isOpen, children }: DialogProps) {
 - **Moleculeまでは汎用コンポーネントを目指す**
   - プロダクト特有のデザインは当てない
   - 特有のデザインを当てる場合は、外側で当てるかpropsとして渡せるようにする
+
+---
+
+## アクセシビリティ
+
+- セマンティックHTML要素（`button` / `nav` / `main` / `label` 等）を優先し、ARIA 属性は不足を補う場合にだけ使う
+- フォームの入力要素は `label` と関連付ける。エラー・完了メッセージは `role="status"` 等で読み上げ対象にする
