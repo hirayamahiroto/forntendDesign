@@ -24,6 +24,23 @@
 | 10 | [禁止事項](./docs/prohibited/index.md) | 技術的制約、実装制約 |
 | 11 | [UIライブラリ選定](./docs/ui-library/index.md) | Headless UI、ShadCN/UI、スタイル付きライブラリの比較 |
 
+### アーキテクチャ（Client / BFF / Backend）
+
+| # | カテゴリ | 説明 |
+|---|---------|------|
+| A0 | [全体アーキテクチャ](./docs/architecture/index.md) | 3 層の責務・依存の方向・データフロー |
+| A1 | [パッケージ構成](./docs/packages/index.md) | モノレポ構成、依存ルール、型契約の共有 |
+| A2 | [Client 構成](./docs/client/index.md) | page.tsx / ClientAdapter / hooks / fetchers の責務分離 |
+| A3 | [BFF 設計](./docs/bff/index.md) | read は厚く write は薄く、エラー契約、マルチクライアント展望 |
+| A4 | [Backend 構成](./docs/backend/index.md) | api-server のレイヤーと BFF との契約 |
+
+動く最小構成: [`prototype/`](./prototype/README.md)
+
+```bash
+./setup.sh                 # 依存インストール・.env.local 作成・型チェック・テスト
+cd prototype && pnpm dev   # http://localhost:3000/profile
+```
+
 ---
 
 ## 参考資料
