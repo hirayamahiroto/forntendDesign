@@ -1,0 +1,17 @@
+@source "./components";
+
+:root {
+  --primary: oklch(0.21 0.006 285.885);
+  --primary-foreground: oklch(0.985 0 0);
+  --border: oklch(0.92 0.004 286.32);
+  --danger: oklch(0.577 0.245 27.325);
+  --success: oklch(0.527 0.154 150.069);
+}
+
+@theme inline {
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-border: var(--border);
+  --color-danger: var(--danger);
+  --color-success: var(--success);
+}
